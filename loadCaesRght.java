@@ -33,7 +33,10 @@ public class loadCaesRght implements FunctObj{
 	public String getName(){
 		return this.Name;
 	}
-
+	
+	public String help(){
+		return "HAHAHA HELP";
+	}
 
 
 
