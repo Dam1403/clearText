@@ -11,4 +11,6 @@ public interface FunctObj{
 
 	public String getName();
 	
+	public String help();
+	
 }
