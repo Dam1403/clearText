@@ -35,8 +35,10 @@ public static class loadInit{
 		
 		buffW.write("[");
 		for(int i = 0; i < fileList.length(); i++ ){
-			file.write(fileList.strip("."[0]))
+			String objName = fileList.strip("."[0]).substring(iD.length() - 1)
+			file.write("new " + objName + ".()")
 		}
+		buffW.write("]")
 	}
 
 
