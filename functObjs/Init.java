@@ -1,4 +1,4 @@
-public static class loadInit{
+public static class Init{
 	
 	
 	
