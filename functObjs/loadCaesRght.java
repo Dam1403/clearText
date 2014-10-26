@@ -1,4 +1,4 @@
-import parent.FunctObj
+import parent.FunctObj;
 
 
 public class loadCaesRght implements FunctObj{
