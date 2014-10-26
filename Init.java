@@ -4,7 +4,7 @@ public static class Init{
 	
 	public static void main(String[] args){
 		BufferedReader br = new BufferedReader
-			(new FileReader("classLoader.java"));
+			(new FileReader("functObjs/classLoader.java"));
 		File file = new File("Loaded.java");
  
 		if (!file.exists()) {
@@ -30,13 +30,23 @@ public static class Init{
 			BufferedWriter buffW,
 			{
 		String iD = "load";
-		File cwd = new File(System.getProperty("user.dir"));
-		String[] fileList = cwd.listFiles();
+		
+	        File Path = new File("functObjs");
+	        List<String> files = list(Path);
+	
+	        for (String file : files) {
+	            System.out.println(file);
+        	}
+    
 		
 		buffW.write("[");
 		for(int i = 0; i < fileList.length(); i++ ){
-			String objName = fileList.strip("."[0]).substring(iD.length() - 1)
-			file.write("new " + objName + ".()")
+			filename = fileList.get(i);
+			if (filename.substring(0,3).equals("load")){
+				String objName = .strip("."[0]).substring(iD.length() - 1)
+				file.write("new " + objName + ".()")	
+			}
+			
 		}
 		buffW.write("]")
 	}
