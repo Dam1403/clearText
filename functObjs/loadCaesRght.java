@@ -1,3 +1,6 @@
+import parent.FunctObj
+
+
 public class loadCaesRght implements FunctObj{
 
 	private String Name;
