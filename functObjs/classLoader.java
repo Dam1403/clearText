@@ -1,6 +1,6 @@
 public class classLoader{
 	
-	functTable functions;
+  functTable functions;
 	
   
   public classLoader(){
