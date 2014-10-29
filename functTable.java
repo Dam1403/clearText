@@ -1,25 +1,27 @@
-import java.util.HashMap
+import java.util.HashMap;
+import functObjs.FunctObj;
 
 
-public static class functTable{
+public class functTable{
 
-	
-	
+
+
 	private HashMap<String,FunctObj> functObjs;
 
 
+	public functTable(){
+		this.functObjs = new HashMap<String,FunctObj>();
 
-	public functTable{
-		functObjs = new HashMap<String,FunctObj>();
-		
+
 	}	
 	public void put(String key,FunctObj functObj){
 		functObjs.put(key,functObj);
 
+
 	}
 
 	public FunctObj get(String key){
-		functObjs.get(key);
+		return functObjs.get(key);
 
 	}
 
