@@ -1,4 +1,4 @@
-package functDefs;
+package functObjs;
 
 public interface FunctObj{
 	
