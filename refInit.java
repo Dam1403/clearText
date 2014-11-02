@@ -2,7 +2,7 @@ import java.io.File;
 
 import java.lang.reflect.Constructor;
 
-import functDefs.FunctObj;
+import functObjs.FunctObj;
 
 public class refInit{
 
