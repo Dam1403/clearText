@@ -1,13 +1,16 @@
-package functDefs;
+package functObjs;
 
-public class CaesRght implements functDefs.FunctObj{
+public class CaesRght implements FunctObj{
 
 
 	public String transmute(String text,String alphabet, int Nonce){
 		String cText = "";
+		text = text.toLowerCase();
 		for (int i = 0; i < text.length(); i++ ){
 			char cHar = text.charAt(i);
+
 			int cHarIndex = alphabet.indexOf(cHar) + 1;
+			if(cHarIndex == 0){continue;}
 			cText += alphabet.charAt(cHarIndex % alphabet.length());
 			
 		}
@@ -20,6 +23,7 @@ public class CaesRght implements functDefs.FunctObj{
 		for (int i = 0; i < cText.length(); i++ ){
 			char cHar = cText.charAt(i);
 			int cHarIndex = alphabet.indexOf(cHar) - 1;
+			if(cHarIndex == -2){continue;}
 			cText += alphabet.charAt(cHarIndex % alphabet.length());
 			
 		}
