@@ -26,14 +26,14 @@ public class clearText{
 		functTable functObjs = refInit.init(clearText.class.getClassLoader());	
 		String line = "";
 		Scanner in = new Scanner(System.in);
-		while(line.equals("EXIT")){
+		while(!line.equals("EXIT")){
+			System.out.print(">");
 			line = in.nextLine().trim();
-			System.out.println("LINE " + line);
-			history.add(line);
+			if(!line.equals("history")){history.add(line);}
 			String[] arguments = line.split("\\s+");
 			FunctObj fObj = functObjs.get(arguments[0]);
 			String input = null;
-
+	
 
 			if(arguments[0].equals("settxt")){
 				if(arguments.length == 2){
