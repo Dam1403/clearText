@@ -77,7 +77,6 @@ public class clearText{
 				
 				if(arguments.length == 2){
 					dispTable(functObjs,arguments[1]);
-					return;
 				}
 
 				System.out.println("Command: settxt");
