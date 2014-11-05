@@ -72,7 +72,34 @@ public class clearText{
 				history(Integer.parseInt(arguments[1]));
 
 			}
+			
+			else if(arguments[0].equals("help")){
+				
+				if(arguments.length == 2){
+					dispTable(functObjs,arguments[1]);
+					return;
+				}
 
+				System.out.println("Command: settxt");
+				System.out.println("\tusage: settxt [your text] ");
+
+				System.out.println("\tusage: settxt [your text filename] -f \n");
+				System.out.println("Command: setalpha");
+				System.out.println("\tusage: setalpha [String your alphabet] ");
+				System.out.println("\tusage: setalpha [alphabet filename]  -fn\n");
+				System.out.println("Command: history");
+				System.out.println("\tusage: history");
+				System.out.println("\tusage: history [Number to display]\n");
+				System.out.println("Command: help");
+				System.out.println("\tusage: help");
+				System.out.println("\tusage: help [FunctObjName]\n");
+				dispTable(functObjs, null);
+
+
+
+
+
+			}
 			else if(fObj != null){
 				if(text == null){
 					System.out.println("text Not Set");
@@ -86,10 +113,9 @@ public class clearText{
 					text = fObj.transmute(text,defAlphabet,0);
 					System.out.println(fObj.getName());
 					System.out.println(text);
-
 				}
-
 			}
+			
 
 		}
 	}
@@ -117,6 +143,31 @@ public class clearText{
 		}
 		for(int i = 0; i < history.size() && i < histNum;i++){
 			System.out.println(i+"."+history.get(i));
+		}
+	}
+
+
+
+	private static void dispTable(functTable table, String objName){
+		if(objName != null){
+
+			if(objName.equals("help")){
+				System.out.println("PARADOX DETECTED");
+				continue;
+			}
+
+			FunctObj help = table.get(objName);
+			if(help == null){System.out.println("No Such Function");}
+			String sHelp = help.help();
+			System.out.println("Function " + objName+":");
+			System.out.println(sHelp);
+			continue;
+		}
+		ArrayList<String> keys = new ArrayList<String>(table.keys());
+		ArrayList<FunctObj> vals = new ArrayList<FunctObj>(table.values());
+		for(int i = 0; i < keys.size(); i++){
+			System.out.println("Function "+keys.get(i));
+			System.out.println(vals.get(i).help());
 		}
 	}
 
