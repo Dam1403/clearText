@@ -30,7 +30,7 @@ public class clearText{
 			System.out.print(">");
 			line = in.nextLine().trim();
 			if(!line.equals("history")){history.add(line);}
-			String[] arguments = line.split("\\s+");
+			String[] arguments = lineHandler(line);
 			FunctObj fObj = functObjs.get(arguments[0]);
 			String input = null;
 	
@@ -152,15 +152,18 @@ public class clearText{
 
 			if(objName.equals("help")){
 				System.out.println("PARADOX DETECTED");
-				continue;
+				return;
 			}
 
 			FunctObj help = table.get(objName);
-			if(help == null){System.out.println("No Such Function");}
+			if(help == null){
+				System.out.println("No Such Function");
+				return;
+			}
 			String sHelp = help.help();
 			System.out.println("Function " + objName+":");
 			System.out.println(sHelp);
-			continue;
+			return;
 		}
 		ArrayList<String> keys = new ArrayList<String>(table.keys());
 		ArrayList<FunctObj> vals = new ArrayList<FunctObj>(table.values());
@@ -168,6 +171,27 @@ public class clearText{
 			System.out.println("Function "+keys.get(i));
 			System.out.println(vals.get(i).help());
 		}
+	}
+
+	private static String[] lineHandler(String line){
+		ArrayList<String> arguments = new ArrayList<String>();
+		String currString = "";
+		char c = 0;
+		for(int i = 0; i < line.length();i++){
+			c = line.charAt(i);
+			if(c == ' ' || i == line.length()){
+				arguments.add(currString);
+				currString = "";		
+			}
+			else{
+				currString += c;
+
+			}
+		}
+		String[] array = new String[arguments.size()];
+		System.out.println(arguments.size());
+		array = arguments.toArray(array);
+		return array;
 	}
 
 }
