@@ -20,11 +20,40 @@ public class clearText{
 
 	private static String text = null;
 
+	
 
+	/**
+	 * The Core of clearText this simple shell gives the user access to the 
+	 * various ciphers contained in the functObj folder
+	 * 
+	 * functObjs - the hashtable of function objects
+	 *
+	 * userAlphabet - Some ciphers need an alphabet to run 
+	 * 	corectly such as the simple caesar cipher 
+	 * 	alphabet Example| a CaesRight over the normal english alphabet 
+	 * 		performed on "cat" would return "dbu"
+	 * userQuote - If your copying and pasting Text into the shell 
+	 * 	using syntax settext "[blog paragraph]" any double quotes in the
+	 * 	text would cut the argument short to solve this I allow the user
+	 * 	to set their own custom palindrome quote string 
+	 * 	or character the user just has to make sure the chosen text 
+	 * 	doesnt contain chosen quote 
+	 *
+	 * history - A history of previously entered commands
+	 *
+	 * text - The Text the user wants encryted or decrypted
+	 *
+	 *  @param args currently useless
+	 */
 	public static void main(String[] args){
-
-
+		
+		
+		System.out.println("clearText Version 0.4");
+		System.out.println("Loading Classes: ");
+		//Show Progress!!!
 		functTable functObjs = refInit.init(clearText.class.getClassLoader());	
+		System.out.println("Done.");
+		System.out.println("Ready. use \"help\" for help");
 		String line = "";
 		Scanner in = new Scanner(System.in);
 		while(!line.equals("EXIT")){
