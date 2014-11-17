@@ -16,13 +16,19 @@ public interface FunctObj{
         /*
         * used to undo the transmutation
         *
-        
         */
     
 	public String recover(String cText, String alphabet, int Nonce);
-
+        
+        /*
+        *returns the name of the object 
+        */
 	public String getName();
 	
+	
+	/*
+	*returns a message for the usage of the object
+	*/
 	public String help();
 	
 }
