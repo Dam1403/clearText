@@ -13,7 +13,7 @@ import functObjs.FunctObj;
 public class clearText{
 
 	private static HashMap<String,FunctObj> functObjs;
-	private static String userAlphabet = null;
+	private static String userAlphabet = "abcdefghijklmnopqrstuvwxyz";
 
 	private static String userQuote = "\"";
 	private static ArrayList<String> history = new ArrayList<String>();
@@ -63,8 +63,16 @@ public class clearText{
 			String[] arguments = lineHandler(line);
 			FunctObj fObj = functObjs.get(arguments[0]);
 			String input = null;
-	
-
+			if(arguments[0].equals("text")){
+				System.out.println("Text is currently:\n");
+				System.out.println(text + "\n");
+				continue;
+			}	
+			if(arguments[0].equals("alphabet")){
+				System.out.println("Alphabet is currently:\n");
+				System.out.println(userAlphabet + "\n");
+				continue;
+			}	
 			if(arguments[0].equals("settext")){
 				if(arguments.length == 2){
 					text = set(arguments[1],false);
@@ -124,6 +132,12 @@ public class clearText{
 					dispTable(functObjs,arguments[1]);
 				}
 
+				System.out.println("Command: text");
+				System.out.println("\tusage: text");
+
+				System.out.println("Command: alphabet");
+				System.out.println("\tusage: alphabet");
+
 				System.out.println("Command: settxt");
 				System.out.println("\tusage: settxt [your text] ");
 
@@ -134,7 +148,7 @@ public class clearText{
 				System.out.println("Command: setquote");
 				System.out.println("\tusage: setquote [String your quote] ");
 				System.out.println("\tusage: setquote [quote filename]  -fn\n");
-				System.out.println("\tDefaults to \" set to a palindrome\n");
+				System.out.println("\tDefaults to \". set to a palindrome\n");
 
 				System.out.println("Command: history");
 				System.out.println("\tusage: history");
@@ -155,7 +169,7 @@ public class clearText{
 					continue;
 				}
 				System.out.println(fObj.getName());
-				text = fObj.transmute(text,text,0);
+				text = fObj.transmute(text,userAlphabet,0);
 				System.out.println(text);
 				for(int i = 1; i<arguments.length;i++){
 					fObj = functObjs.get(arguments[i]);
@@ -248,7 +262,8 @@ public class clearText{
 				int potInd = i + userQuote.length();
 				if(userQuote.equals(line.substring(i,potInd))){
 					quote = !quote;
-					i += userQuote.length();
+					i += userQuote.length() - 1;
+					
 				}
 			}
 
