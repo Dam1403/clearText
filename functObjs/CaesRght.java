@@ -8,13 +8,11 @@ public class CaesRght implements FunctObj{
 		text = text.toLowerCase();
 		for (int i = 0; i < text.length(); i++ ){
 			char cHar = text.charAt(i);
-			if(alphabet.indexOf(cHar) == -1){
-				cText += cHar;
-				continue;	
-			}
+
 			int cHarIndex = alphabet.indexOf(cHar) + 1;
+			if(cHarIndex == 0){continue;}
 			cText += alphabet.charAt(cHarIndex % alphabet.length());
-				
+			
 		}
 		return cText;
 	
@@ -24,11 +22,8 @@ public class CaesRght implements FunctObj{
 		String Text = "";
 		for (int i = 0; i < cText.length(); i++ ){
 			char cHar = cText.charAt(i);
-			if(alphabet.indexOf(cHar) == -1){
-				cText += cHar;
-				continue;	
-			}
 			int cHarIndex = alphabet.indexOf(cHar) - 1;
+			if(cHarIndex == -2){continue;}
 			cText += alphabet.charAt(cHarIndex % alphabet.length());
 			
 		}
