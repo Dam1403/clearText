@@ -5,8 +5,9 @@ import java.util.ArrayList;
 import java.io.FileReader;
 import java.io.FileNotFoundException;
 
+import static java.lang.System.out;
+
 import functObjs.FunctObj;
-//YOU WERE TESTING QUOTES
 
 /*#REFACTOR FUNCTION CLASSS!!!!!!*/
 
@@ -48,12 +49,17 @@ public class clearText{
 	public static void main(String[] args){
 		
 		
-		System.out.println("clearText Version 0.4");
-		System.out.println("Loading Classes: ");
+		out.println("clearText Version 0.5");
+
+
+		out.println("Compiling JavaFiles: ");
+		compiler.initCompile();
+		out.println("Done.");
+		out.println("Loading Classes: ");
 		//Show Progress!!!
 		functTable functObjs = refInit.init(clearText.class.getClassLoader());	
-		System.out.println("Done.");
-		System.out.println("Ready. use \"help\" for help");
+		out.println("Done.");
+		out.println("Ready. use \"help\" for help");
 		String line = "";
 		Scanner in = new Scanner(System.in);
 		while(!line.equals("EXIT")){
@@ -67,13 +73,13 @@ public class clearText{
 			String input = null;
 
 			if(arguments[0].equals("text")){
-				System.out.println("Text is currently:\n");
-				System.out.println(text + "\n");
+				out.println("Text is currently:\n");
+				out.println(text + "\n");
 				continue;
 			}	
 			if(arguments[0].equals("alphabet")){
-				System.out.println("Alphabet is currently:\n");
-				System.out.println(userAlphabet + "\n");
+				out.println("Alphabet is currently:\n");
+				out.println(userAlphabet + "\n");
 				continue;
 			}	
 			if(arguments[0].equals("settext")){
@@ -81,13 +87,13 @@ public class clearText{
 					text = set(arguments[1],false);
 				}
 				else if(arguments.length == 1 || arguments.length > 3 ){
-					System.out.println("Invalid argument Length");
+					out.println("Invalid argument Length");
 					continue;
 				}
 				else{
 					text = set(arguments[1],arguments[2].equals("-f"));
 				}
-				System.out.println("Text set to " + text);
+				out.println("Text set to " + text);
 				continue;
 			}
 
@@ -98,13 +104,13 @@ public class clearText{
 					userAlphabet = set(arguments[1],false);
 				}
 				else if(arguments.length == 1 || arguments.length > 3 ){
-					System.out.println("Invalid argument Length");
+					out.println("Invalid argument Length");
 					continue;
 				}
 				else{
 					userAlphabet = set(arguments[1],arguments[2].equals("-f"));
 				}
-				System.out.println("Alphabet set to " + userAlphabet);
+				out.println("Alphabet set to " + userAlphabet);
 				continue;
 			}
 			//FIND BETTER WAY TO HANDLE THESE SETS
@@ -114,13 +120,13 @@ public class clearText{
 					userQuote = set(arguments[1],false);
 				}
 				else if(arguments.length == 1 || arguments.length > 3 ){
-					System.out.println("Invalid argument Length");
+					out.println("Invalid argument Length");
 					continue;
 				}
 				else{
 					userQuote = set(arguments[1],arguments[2].equals("-f"));
 				}
-				System.out.println("quote set to " + userQuote);
+				out.println("quote set to " + userQuote);
 				continue;
 			}
 			else if(arguments[0].equals("history")){
@@ -139,47 +145,47 @@ public class clearText{
 					dispTable(functObjs,arguments[1]);
 				}
 
-				System.out.println("Command: text");
-				System.out.println("\tusage: text");
+				out.println("Command: text");
+				out.println("\tusage: text");
 
-				System.out.println("Command: alphabet");
-				System.out.println("\tusage: alphabet");
+				out.println("Command: alphabet");
+				out.println("\tusage: alphabet");
 
-				System.out.println("Command: settxt");
-				System.out.println("\tusage: settxt [your text] ");
+				out.println("Command: settxt");
+				out.println("\tusage: settxt [your text] ");
 
-				System.out.println("\tusage: settxt [your text filename] -f \n");
-				System.out.println("Command: setalpha");
-				System.out.println("\tusage: setalpha [String your alphabet] ");
-				System.out.println("\tusage: setalpha [alphabet filename]  -fn\n");
-				System.out.println("Command: setquote");
-				System.out.println("\tusage: setquote [String your quote] ");
-				System.out.println("\tusage: setquote [quote filename]  -fn\n");
-				System.out.println("\tDefaults to \". set to a palindrome\n");
+				out.println("\tusage: settxt [your text filename] -f \n");
+				out.println("Command: setalpha");
+				out.println("\tusage: setalpha [String your alphabet] ");
+				out.println("\tusage: setalpha [alphabet filename]  -fn\n");
+				out.println("Command: setquote");
+				out.println("\tusage: setquote [String your quote] ");
+				out.println("\tusage: setquote [quote filename]  -fn\n");
+				out.println("\tDefaults to \". set to a palindrome\n");
 
-				System.out.println("Command: history");
-				System.out.println("\tusage: history");
-				System.out.println("\tusage: history [Number to display]\n");
-				System.out.println("Command: help");
-				System.out.println("\tusage: help");
-				System.out.println("\tusage: help [FunctObjName]\n");
+				out.println("Command: history");
+				out.println("\tusage: history");
+				out.println("\tusage: history [Number to display]\n");
+				out.println("Command: help");
+				out.println("\tusage: help");
+				out.println("\tusage: help [FunctObjName]\n");
 				dispTable(functObjs, null);
 				continue;
 
 			}
 			else if(fObj != null){
 				if(text == null){
-					System.out.println("text Not Set");
+					out.println("text Not Set");
 					continue;
 				}
-				System.out.println(fObj.getName());
+				out.println(fObj.getName());
 				text = fObj.transmute(text,userAlphabet,0);
-				System.out.println(text);
+				out.println(text);
 				for(int i = 1; i<arguments.length;i++){
 					fObj = functObjs.get(arguments[i]);
 					text = fObj.transmute(text,userAlphabet,0);
-					System.out.println(fObj.getName());
-					System.out.println(text);
+					out.println(fObj.getName());
+					out.println(text);
 				}
 				continue;
 			}
@@ -224,7 +230,7 @@ public class clearText{
 			histNum = history.size();
 		}
 		for(int i = 0; i < history.size() && i < histNum;i++){
-			System.out.println(i+"."+history.get(i));
+			out.println(i+"."+history.get(i));
 		}
 	}
 
@@ -240,25 +246,25 @@ public class clearText{
 		if(objName != null){
 
 			if(objName.equals("help")){
-				System.out.println("PARADOX DETECTED");
+				out.println("PARADOX DETECTED");
 				return;
 			}
 
 			FunctObj help = table.get(objName);
 			if(help == null){
-				System.out.println("No Such Function");
+				out.println("No Such Function");
 				return;
 			}
 			String sHelp = help.help();
-			System.out.println("Function " + objName+":");
-			System.out.println(sHelp);
+			out.println("Function " + objName+":");
+			out.println(sHelp);
 			return;
 		}
 		ArrayList<String> keys = new ArrayList<String>(table.keys());
 		ArrayList<FunctObj> vals = new ArrayList<FunctObj>(table.values());
 		for(int i = 0; i < keys.size(); i++){
-			System.out.println("Function "+keys.get(i));
-			System.out.println(vals.get(i).help());
+			out.println("Function "+keys.get(i));
+			out.println(vals.get(i).help());
 		}
 	}
 	
