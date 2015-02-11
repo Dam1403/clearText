@@ -21,7 +21,7 @@ public class clearText{
 
 	private static String text = null;
 
-	
+
 
 	/**
 	 * The Core of clearText this simple shell gives the user access to the 
@@ -47,8 +47,8 @@ public class clearText{
 	 * @param args currently useless
 	 */
 	public static void main(String[] args){
-		
-		
+
+
 		out.println("clearText Version 0.5");
 
 
@@ -99,7 +99,7 @@ public class clearText{
 
 
 			else if(arguments[0].equals("setalpha")){
-				
+
 				if(arguments.length == 2){
 					userAlphabet = set(arguments[1],false);
 				}
@@ -115,7 +115,7 @@ public class clearText{
 			}
 			//FIND BETTER WAY TO HANDLE THESE SETS
 			else if(arguments[0].equals("setquote")){
-				
+
 				if(arguments.length == 2){
 					userQuote = set(arguments[1],false);
 				}
@@ -129,6 +129,12 @@ public class clearText{
 				out.println("quote set to " + userQuote);
 				continue;
 			}
+			//WRITE STATE TO FILE
+			else if(arguments[0].equals("state")){
+				//VIEW
+				//LOAD
+				//SAVE	
+			}
 			else if(arguments[0].equals("history")){
 				if(arguments.length == 1){
 					history(0);
@@ -138,39 +144,20 @@ public class clearText{
 				continue;
 
 			}
-			
+
+			else if(arguments[0].equals("reCompile")){
+				compiler.initCompile();	
+				continue;
+
+			}
+
 			else if(arguments[0].equals("help")){
-				
+
+				helpMessage();
 				if(arguments.length == 2){
 					dispTable(functObjs,arguments[1]);
+					continue;
 				}
-
-				out.println("Command: text");
-				out.println("\tusage: text");
-
-				out.println("Command: alphabet");
-				out.println("\tusage: alphabet");
-
-				out.println("Command: settxt");
-				out.println("\tusage: settxt [your text] ");
-
-				out.println("\tusage: settxt [your text filename] -f \n");
-				out.println("Command: setalpha");
-				out.println("\tusage: setalpha [String your alphabet] ");
-				out.println("\tusage: setalpha [alphabet filename]  -fn\n");
-				out.println("Command: setquote");
-				out.println("\tusage: setquote [String your quote] ");
-				out.println("\tusage: setquote [quote filename]  -fn\n");
-				out.println("\tDefaults to \". set to a palindrome\n");
-
-				out.println("Command: history");
-				out.println("\tusage: history");
-				out.println("\tusage: history [Number to display]\n");
-				out.println("Command: help");
-				out.println("\tusage: help");
-				out.println("\tusage: help [FunctObjName]\n");
-				dispTable(functObjs, null);
-				continue;
 
 			}
 			else if(fObj != null){
@@ -190,7 +177,6 @@ public class clearText{
 				continue;
 			}
 			history.remove(history.size() - 1);
-			
 
 		}
 	}
@@ -211,9 +197,9 @@ public class clearText{
 			catch(FileNotFoundException e){
 				return "FileName " + theText + "Does Not Exist";
 			}
-				while(file.hasNext()){
-					newText += file.next();
-				}
+			while(file.hasNext()){
+				newText += file.next();
+			}
 			theText = newText;
 		}
 		return theText;
@@ -267,7 +253,7 @@ public class clearText{
 			out.println(vals.get(i).help());
 		}
 	}
-	
+
 	/** Handles the line recieved from the user
 	 * It splits the line by space and groups strings together based on
 	 * the user specified quote pattern userQuote
@@ -286,7 +272,7 @@ public class clearText{
 
 			if(c == ' ' || i == line.length()){
 				if(quote){
-					
+
 					currString += c;
 					continue;
 				}
@@ -297,10 +283,10 @@ public class clearText{
 			//May be able to be done with subString
 			else if (c == userQuote.charAt(0)){
 				int potInd = i + userQuote.length();
+				
 				if(userQuote.equals(line.substring(i,potInd))){
 					quote = !quote;
 					i += userQuote.length() - 1;
-					
 				}
 			}
 
@@ -313,6 +299,39 @@ public class clearText{
 		String[] array = new String[arguments.size()];
 		array = arguments.toArray(array);
 		return array;
+	}
+	private static void helpMessage(){
+
+		out.println("Command: text");
+		out.println("\tusage: text");
+
+		out.println("Command: alphabet");
+		out.println("\tusage: alphabet");
+
+		out.println("Command: settxt");
+		out.println("\tusage: settxt [your text] ");
+
+		out.println("\tusage: settxt [your text filename] -f \n");
+		out.println("Command: setalpha");
+		out.println("\tusage: setalpha [String your alphabet] ");
+		out.println("\tusage: setalpha [alphabet filename]  -fn\n");
+		out.println("Command: setquote");
+		out.println("\tusage: setquote [String your quote] ");
+		out.println("\tusage: setquote [quote filename]  -fn\n");
+		out.println("\tDefaults to \". set to a palindrome\n");
+
+		out.println("Command: history");
+		out.println("\tusage: history");
+		out.println("\tusage: history [Number to display]\n");
+		
+		out.println("Command: reCompile");
+		out.println("\tusage: reCompile\n");
+
+		out.println("Command: help");
+		out.println("\tusage: help");
+		out.println("\tusage: help [FunctObjName]\n");
+
+
 	}
 
 }
