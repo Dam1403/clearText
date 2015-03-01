@@ -15,7 +15,7 @@ Mobile platform development
 Output To FILE!!****
 Setup Module Server.?
    accounts and supporting user uploads.
-clearText v.01
+clearText v.05
 
 clearText is the main java file.
 refInit Loads the classes into memory for use.

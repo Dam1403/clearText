@@ -154,6 +154,7 @@ public class clearText{
 			else if(arguments[0].equals("help")){
 
 				helpMessage();
+				dispTable(functObjs,null);
 				if(arguments.length == 2){
 					dispTable(functObjs,arguments[1]);
 					continue;
@@ -308,10 +309,10 @@ public class clearText{
 		out.println("Command: alphabet");
 		out.println("\tusage: alphabet");
 
-		out.println("Command: settxt");
-		out.println("\tusage: settxt [your text] ");
+		out.println("Command: settext");
+		out.println("\tusage: settext [your text] ");
 
-		out.println("\tusage: settxt [your text filename] -f \n");
+		out.println("\tusage: settext [your text filename] -f \n");
 		out.println("Command: setalpha");
 		out.println("\tusage: setalpha [String your alphabet] ");
 		out.println("\tusage: setalpha [alphabet filename]  -fn\n");
